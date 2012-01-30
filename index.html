@@ -1,0 +1,90 @@
+<html>
+
+    <head>
+        <title>Snake in da Canvaz</title>
+		
+		<script src="js/jquery-1.7.min.js"></script>
+		<script src="js/SnakeEngine.js"></script>
+		<script src="js/Snake.js"></script>
+		<script src="js/Point.js"></script>
+		<script src="js/Food.js"></script>
+		<script src="js/GameOverText.js"></script>
+		
+		<LINK href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body id="snakebackground">
+	
+		<div>
+			<div id="snaketext">Snake - HTML5 + JavaScript + Canvas + LocalStorage</div>			
+		</div>
+		
+		<div id="snakediv"> 									
+			<canvas id="canvas" width='600' height='600'></canvas>		
+		</div>
+		
+		<div>
+			<div id="snaketext">HighScore: <span id='highscore'>0</span></div>
+		</div>
+
+    </body>
+
+    <script type="text/javascript">
+
+	var canvas, context, engine, timerHandle, currentDirection;
+				
+	$(document).ready(function () {
+		init();
+	});
+
+	function init() {
+						
+		var highScore = document.getElementById("highscore");
+		if(localStorage.highScore) {
+			highScore.innerText = localStorage.highScore;
+		} 
+		
+		canvas = document.getElementById("canvas");
+		context = canvas.getContext("2d");
+
+		window.onkeydown = onKeyDown;		            
+		
+		currentDirection = 'right';
+		
+		engine = new SnakeEngine(canvas.width,canvas.height);
+		engine.init();
+		
+		timerHandle = setInterval( "updateEngine()", 1000 / 20 );
+	}
+	
+	function updateEngine() {
+		engine.update(currentDirection);
+		engine.draw(context);		
+	}
+
+	function onKeyDown(e) {
+				
+		switch(e.keyCode)
+		{
+			case 37:
+				currentDirection = 'left';
+				break;		
+			case 38:
+				currentDirection = 'up';
+				break;			
+			case 39:
+				currentDirection = 'right';
+				break;							
+			case 40:
+				currentDirection = 'down';	
+				break;			
+			case 32:
+				clearInterval(timerHandle);
+				init();
+				break;
+		}		
+	}	
+    
+    </script>
+
+</html>

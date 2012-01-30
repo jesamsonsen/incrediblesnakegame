@@ -1,0 +1,34 @@
+body#snakebackground
+{
+	background: -webkit-gradient(linear, left top, left bottom, from(#6D6D6D), to(#DADADA));
+}
+
+div#snaketext
+{
+	font-family: Arial Black, Gadget, sans-serif;
+	font-size: x-large;
+	text-align: center;
+	border:2px solid;
+	border-radius:25px;
+	width: 600; 
+	color: white; 
+	background-color:#003366; 
+	padding-top: 20px; 
+	padding-right: 20px;
+	padding-bottom: 20px; 
+	padding-left: 20px;
+}
+
+div#snakediv
+{	
+	border:2px solid;
+	border-radius:25px;
+	width: 600; 
+	height: 600px; 
+	color: white; 
+	background-color:#003366; 
+	padding-top: 20px; 
+	padding-right: 20px;
+	padding-bottom: 20px; 
+	padding-left: 20px;
+}
